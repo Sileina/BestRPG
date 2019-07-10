@@ -32,7 +32,7 @@ public class Main {
         //ON ATTRIBUE LES STATS DU BOSS
         crea.creation(boss);
 
-        System.out.println("Bienvenue jeunes Heros! Serez vous à la hauteur pour terraser la menace qui planne sur vous?");
+        System.out.println("Bienvenue jeunes Heros! Serez vous à la hauteur pour terraser la menace qui plane sur vous?");
 
         Integer tour = 1;
         //tant que le boss a tous ses pv ou que les heros sont présents dans la liste le combat continu
@@ -42,22 +42,79 @@ public class Main {
 
     }
 
-    public static void battleRound(Integer tour, AttackManager atk,Personnage boss, Personnage mage, Personnage paladin, Personnage soigneur, Personnage guerrier, List<Personnage> Heros) {
+    public static void battleRound(Integer tour, AttackManager atk, Personnage boss, Personnage mage, Personnage paladin, Personnage soigneur, Personnage guerrier, List<Personnage> Heros) {
         System.out.println("___________________________________________________");
         final Scanner userInput = new Scanner(System.in);
 
         System.out.println("Tour " + tour);
         Boolean isDefense = false;
 
-        atckHero(isDefense, Heros,  boss,  atk,  userInput);
+        atckHero(isDefense, Heros, boss, atk, userInput);
+        System.out.println(isDefense);
+        atckBoss(isDefense, Heros, boss, atk, paladin);
 
 
+        System.out.println("___________________________________________________");
+
+        System.out.println("Fin du tour " + tour);
+        for (Personnage hero : Heros) {
+            System.out.println(hero.getNom() + ": " + hero.getPv() + " Pv restant.");
+        }
+        System.out.println(boss.getNom() + ": " + boss.getPv() + " Pv restant.");
+        System.out.println("___________________________________________________");
+        tour++;
+
+        if (boss.getPv() <= 0) {
+            System.out.println("Félicitation! Vous êtes venu à bout de cette horrible créature");
+        }
+        if (Heros.size() <= 0) {
+            System.out.println("Le boss vous a anihilé...");
+        } else {
+            battleRound(tour, atk, boss, mage, paladin, soigneur, guerrier, Heros);
+        }
+    }
+
+    public static void atckHero(Boolean isDefense, List<Personnage> Heros, Personnage boss, AttackManager atk, Scanner userInput) {
+        for (Personnage hero : Heros) {
+            System.out.println("Tour de Hero " + hero.getNom());
+            System.out.println("Touche 1: Attaque Normale");
+            System.out.println("Touche 2: Compétence Spéciale");
+            final Integer attackChoice = userInput.nextInt();
+            if (attackChoice == 2) {
+                if (hero.getRole() == RoleList.PALADIN) {
+                    isDefense = true;
+                    System.out.println("Le Paladin se prépare à défendre");
+                } else {
+                    if (hero.getRole() == RoleList.SOIGNEUR) {
+                        System.out.println("Qui souhaitez vous soignez?");
+                        for (Personnage hero2 : Heros) {
+                            Integer i = 0;
+                            System.out.println("Touche " + i + ": " + hero2.getNom());
+                        }
+                        final Integer healChoice = userInput.nextInt();
+                        atk.attackSpecial(hero, Heros.get(healChoice));
+                    } else {
+                        atk.attackSpecial(hero, boss);
+                    }
+                }
+
+            } else {
+                atk.attack(hero, boss);
+
+            }
+
+
+        }
+    }
+
+
+    public static void atckBoss(Boolean isDefense, List<Personnage> Heros, Personnage boss, AttackManager atk, Personnage paladin) {
         System.out.println("Le boss vous attaque!");
         if (isDefense) {
-            atk.attack(boss, guerrier);
-            if (guerrier.getPv() <= 0) {
-                System.out.println(guerrier.getNom() + " est mort. Paix à son âme.");
-                Heros.remove(guerrier);
+            atk.attack(boss, paladin);
+            if (paladin.getPv() <= 0) {
+                System.out.println(paladin.getNom() + " est mort. Paix à son âme.");
+                Heros.remove(paladin);
             }
         } else {
             Integer heroAleatoire = 0;
@@ -71,64 +128,7 @@ public class Main {
                 Heros.remove(Heros.get(heroAleatoire));
             }
         }
-
-        System.out.println("___________________________________________________");
-
-        System.out.println("Fin du tour " + tour);
-        for (Personnage hero : Heros) {
-            System.out.println(hero.getNom() + ": " + hero.getPv() + " Pv restant.");
-        }
-        System.out.println(boss.getNom() + ": " + boss.getPv() + " Pv restant.");
-        System.out.println("___________________________________________________");
-        tour++;
-
-        if(boss.getPv()<=0)
-
-        {
-            System.out.println("Félicitation! Vous êtes venu à bout de cette horrible créature");
-        }
-        if(Heros.size()<=0)
-
-        {
-            System.out.println("Le boss vous a anihilé...");
-        } else {
-            battleRound(tour, atk, boss, mage, paladin, soigneur, guerrier, Heros);
-        }
     }
-
-public static void atckHero(Boolean isDefense, List<Personnage> Heros, Personnage boss, AttackManager atk, Scanner userInput)  {
-    for (Personnage hero : Heros) {
-        System.out.println("Tour de Hero " + hero.getNom());
-        System.out.println("Touche 1: Attaque Normale");
-        System.out.println("Touche 2: Compétence Spéciale");
-        final Integer attackChoice = userInput.nextInt();
-        if (attackChoice == 2) {
-            if (hero.getRole() == RoleList.PALADIN) {
-                isDefense = true;
-                System.out.println("Le Paladin se prépare à défendre");
-            } else {
-                if (hero.getRole() == RoleList.SOIGNEUR) {
-                    System.out.println("Qui souhaitez vous soignez?");
-                    for (Personnage hero2 : Heros) {
-                        Integer i = 0;
-                        System.out.println("Touche " + i + ": " + hero2.getNom());
-                    }
-                    final Integer healChoice = userInput.nextInt();
-                    atk.attackSpecial(hero, Heros.get(healChoice));
-                } else {
-                    atk.attackSpecial(hero, boss);
-                }
-            }
-
-        } else {
-            atk.attack(hero, boss);
-
-        }
-
-
-    }
-}
-
 
 }
 

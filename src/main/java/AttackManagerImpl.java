@@ -22,17 +22,17 @@ public class AttackManagerImpl implements AttackManager {
                 switch (percentage){
                     case 0:
                         cible.setPv(cible.getPv() - (att.getMagie()*1.5-cible.getDefense()));
-                        System.out.println(att.getNom()+ " inflige " + (att.getMagie()*1.5-cible.getDefense()) + "de degat à " + cible.getNom());
+                        System.out.println(att.getNom()+ " inflige avec son attaque magique" + (att.getMagie()*1.5-cible.getDefense()) + "de degat à " + cible.getNom());
 
                         break;
                     case 1:
                         cible.setPv(cible.getPv() - (att.getAttaque()*2-cible.getDefense()));
-                        System.out.println(att.getNom()+ " inflige " + (att.getAttaque()*2-cible.getDefense()) + "de degat à " + cible.getNom());
+                        System.out.println(att.getNom()+ " inflige avec son attaque spéciale " + (att.getAttaque()*2-cible.getDefense()) + "de degat à " + cible.getNom());
 
                         break;
                     case 2:
                         cible.setPv(cible.getPv() - (att.getAttaque()-cible.getDefense()));
-                        System.out.println(att.getNom()+ " inflige " + (att.getAttaque()-cible.getDefense()) + "de degat à " + cible.getNom());
+                        System.out.println(att.getNom()+ " inflige avec son attaque" + (att.getAttaque()-cible.getDefense()) + "de degat à " + cible.getNom());
 
                         break;
 
@@ -42,19 +42,19 @@ public class AttackManagerImpl implements AttackManager {
             case GUERRIER:
 
                 cible.setPv(cible.getPv() - (att.getAttaque()*2-cible.getDefense()));
-                System.out.println(att.getNom()+ " inflige " + (att.getAttaque()*2-cible.getDefense()) + "de degat à " + cible.getNom());
+                System.out.println(att.getNom()+ " inflige avec son attaque spéciale " + (att.getAttaque()*2-cible.getDefense()) + "de degat à " + cible.getNom());
 
                 break;
             case MAGE:
 
                 cible.setPv(cible.getPv() - (att.getMagie()*2-cible.getDefense()));
-                System.out.println(att.getNom()+ " inflige " + (att.getMagie()*2-cible.getDefense()) + "de degat à " + cible.getNom());
+                System.out.println(att.getNom()+ " inflige avec son attaque spéciale " + (att.getMagie()*2-cible.getDefense()) + "de degat à " + cible.getNom());
 
                 break;
 
             default:
                 cible.setPv(cible.getPv() - (att.getMagie()*1.5-cible.getDefense()));
-                System.out.println(att.getNom()+ " inflige " + (att.getMagie()*1.5-cible.getDefense()) + "de degat à " + cible.getNom());
+                System.out.println(att.getNom()+ " inflige avec son attaque spéciale " + (att.getMagie()*1.5-cible.getDefense()) + "de degat à " + cible.getNom());
 
                 break;
         }

@@ -5,7 +5,7 @@ public class CreationManagerImpl implements CreationManager{
             case MAGE:
                 personnage.setNom("Mage");
                 personnage.setPv(311.0);
-                personnage.setAttaque(400.0);
+                personnage.setAttaque(150.0);
                 personnage.setDefense(300.0);
                 personnage.setMagie(400.0);
                 break;
