@@ -1,10 +1,43 @@
 public class Personnage {
 
     private String nom;
-    private Integer pv;
-    private Integer attaque;
-    private Integer defense;
-    private Integer magie;
+    private Double pv;
+
+    public Double getPv() {
+        return pv;
+    }
+
+    public void setPv(Double pv) {
+        this.pv = pv;
+    }
+
+    public Double getAttaque() {
+        return attaque;
+    }
+
+    public void setAttaque(Double attaque) {
+        this.attaque = attaque;
+    }
+
+    public Double getDefense() {
+        return defense;
+    }
+
+    public void setDefense(Double defense) {
+        this.defense = defense;
+    }
+
+    public Double getMagie() {
+        return magie;
+    }
+
+    public void setMagie(Double magie) {
+        this.magie = magie;
+    }
+
+    private Double attaque;
+    private Double defense;
+    private Double magie;
     private RoleList role;
 
     public Personnage(RoleList role) {
@@ -21,8 +54,6 @@ public class Personnage {
     }
 
 
-
-
     public String getNom() {
         return nom;
     }
@@ -30,48 +61,5 @@ public class Personnage {
     public void setNom(String nom) {
         this.nom = nom;
     }
-
-    public Integer getPv() {
-        return pv;
-    }
-
-    public void setPv(Integer pv) {
-        this.pv = pv;
-    }
-
-    public Integer getAttaque() {
-        return attaque;
-    }
-
-    public void setAttaque(Integer attaque) {
-        this.attaque = attaque;
-    }
-
-    public Integer getDefense() {
-        return defense;
-    }
-
-    public void setDefense(Integer defense) {
-        this.defense = defense;
-    }
-
-    public Integer getMagie() {
-        return magie;
-    }
-
-    public void setMagie(Integer magie) {
-        this.magie = magie;
-    }
-
-    public Integer getSoin() {
-        return soin;
-    }
-
-    public void setSoin(Integer soin) {
-        this.soin = soin;
-    }
-
-    private Integer soin;
-
-
 }
+

@@ -3,6 +3,6 @@ public enum RoleList {
     SOIGNEUR,
     GUERRIER,
     MAGE,
-    WOLRDBOSS
+    BOSS
 
 }
