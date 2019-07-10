@@ -1,4 +1,15 @@
-package PACKAGE_NAME;
+public class Attaquant extends Personnage {
 
-public class Attaquant {
+    public Personnage Steven = new Personnage();
+
+    Steven.setNom("BestWarrior");
+    Steven.setPv("");
+    Steven.setAttaque("");
+    Steven.setDefense("");
+    Steven.setMagie("");
+
+
+
+
+
 }
