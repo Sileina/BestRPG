@@ -26,8 +26,7 @@ public class AttackManagerImpl implements AttackManager {
 
                         break;
                     case 1:
-                        cible.setPv(cible.getPv() - (att.getAttaque()*2-cible.getDefense()));
-                        System.out.println(att.getNom()+ " inflige avec son attaque spéciale " + (att.getAttaque()*2-cible.getDefense()) + "de degat à " + cible.getNom());
+                        cible.setPv(cible.getPv() - (att.getAttaque()*2-cible.getDefense()));                        System.out.println(att.getNom()+ " inflige avec son attaque spéciale " + (att.getAttaque()*2-cible.getDefense()) + "de degat à " + cible.getNom());
 
                         break;
                     case 2:
