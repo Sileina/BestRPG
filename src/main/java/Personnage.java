@@ -5,6 +5,23 @@ public class Personnage {
     private Integer attaque;
     private Integer defense;
     private Integer magie;
+    private RoleList role;
+
+    public Personnage(RoleList role) {
+        this.role = role;
+    }
+
+
+    public RoleList getRole() {
+        return role;
+    }
+
+    public void setRole(RoleList role) {
+        this.role = role;
+    }
+
+
+
 
     public String getNom() {
         return nom;
