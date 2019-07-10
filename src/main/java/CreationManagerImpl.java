@@ -33,8 +33,8 @@ public class CreationManagerImpl implements CreationManager{
                 break;
             case BOSS:
                 personnage.setNom("World Boss");
-                personnage.setPv(311.0);
-                personnage.setAttaque(400.0);
+                personnage.setPv(10000.0);
+                personnage.setAttaque(10000.0);
                 personnage.setDefense(300.0);
                 personnage.setMagie(400.0);
                 break;
