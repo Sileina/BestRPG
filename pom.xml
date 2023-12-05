@@ -8,7 +8,7 @@
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <logbackVersion>1.2.3</logbackVersion>
+        <logbackVersion>1.2.13</logbackVersion>
         <jacocoPluginVersion>0.8.4</jacocoPluginVersion>
         <junitVersion>5.5.0</junitVersion>
         <mavenTestPluginsVersion>2.22.0</mavenTestPluginsVersion>
